@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<title>Dice roll</title>
+
+
+<% dice1 = rand(1..6) %>
+<% dice2 = rand(1..6) %>
+
+<!--<%=dice1%> <%=dice2%><br>-->
+
+<% url1 = "http://kiei925.com/images/dice/#{dice1}.png"%>
+<% url2 = "http://kiei925.com/images/dice/#{dice2}.png"%>
+
+<img src= <%= url1%> alt="dice1">
+<img src= <%= url2%> alt="dice2">
+
+</html>
