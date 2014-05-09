@@ -1,6 +1,12 @@
 Book:
  - title: string
  - author: string
+ - price: integer
+
+Review:
+ - bookid: integer
+ - review: string
+ - rating: integer
 # Example table for a typical Book model.
 #
 # Book:

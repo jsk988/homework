@@ -1,0 +1,20 @@
+<p>
+<%= link_to "Home", "/"%> | <%= link_to "Book List", "/books"%>
+</p>
+
+<% all_books = Book.all%>
+<% highest = 0%>
+<% editorspick = nil%>
+
+<% all_books.each do |book| %>
+    <% avgrating = Review.where("bookid" => book["id"]).average(:rating)%>
+    <%if (avgrating!= nil) && (avgrating > highest)%>
+    <%  highest = avgrating%>
+    <%  editorspick = book%>
+    <%end%>
+<%end%>
+
+<p>
+Editor's Pick: 
+<%= link_to editorspick.title, "/books/#{editorspick.id}"%>
+</p>

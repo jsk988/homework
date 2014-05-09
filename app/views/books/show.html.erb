@@ -1,0 +1,29 @@
+<p>
+<%= link_to "Home", "/"%> | <%= link_to "Book List", "/books"%>
+</p>
+
+<% bookid = params["id"]%>
+<% book = Book.find_by("id" => bookid)%>
+<% reviews = Review.where("bookid" => bookid)%>
+
+<p>
+<strong>Title: </strong>
+<%= book.title%>
+</p>
+
+<p>
+<strong>Price: </strong>
+<%= book.price%>
+</p>
+
+<p>
+<strong>Avg rating: </strong>
+<%= reviews.average(:rating).to_s%>
+</p>
+
+<ul>
+<strong>Reviews: </strong>
+<% reviews.each do |review|%>
+	<li><%= review.review%></li>
+<%end%>
+</ul>

@@ -1,5 +1,3 @@
-<h1>Books</h1>
-
 <head>
   <style>
   table,th,td
@@ -7,24 +5,30 @@
   	border:1px solid;
   	border-color:#C0C0C0;
   	border-collapse:collapse;
-  	padding:15px;
+  	padding:5px;
   	font-family:Arial;
   }
   </style>
  </head>
 
+ <p>
+<%= link_to "Home", "/"%> | <%= link_to "Book List", "/books"%>
+</p>
+
 	<% all_books = Book.all%>
 
-	<table style="width:700px">
+	<table style="width:500px">
 	<tr>
 		<td><b>Title</b></td>
-		<td><b>Author</b></td>
+		<td><b>Average Rating</b></td>
 	<tr>
+
 
 	<% all_books.each do |book| %>
 	  <tr>
-		<td><%= book["title"]%></td>
-		<td><%= book["author"]%></td>
-      <tr>
-    <%end%>
-    </table>
+		<td><%= link_to book["title"], "/books/#{book["id"]}"%></td>
+    <% avgrating = Review.where("bookid" => book["id"]).average(:rating)%>
+		<td><%= avgrating.to_s %></td>
+    <tr>
+  <%end%>
+  </table>
